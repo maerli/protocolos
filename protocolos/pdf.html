@@ -1,0 +1,43 @@
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js" integrity="sha512-fY7ysH3L9y/DP/DVYqPNopiQ+Ubd9t0dt9C4riu0RZwYOvMejMnKVAnXK7xfB0SIawKP0c4sQoh2niIMSkkWAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+</head>
+<body>
+<iframe width="100%" height="100%" id="pdf"></iframe>
+<div id="p">
+<h1> oii </h1>
+</div>
+<script>
+try{
+const doc = new jsPDF();
+doc.text("Hello world!", 10, 10);
+ 
+  // We'll make our own renderer to skip this editor
+  var specialElementHandlers = {
+    '#getPDF': function(element, renderer){
+      return true;
+    },
+    '.controls': function(element, renderer){
+      return true;
+    }
+  };
+
+  // All units are in the set measurement for the document
+  // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
+  doc.fromHTML(document.querySelector('#p'), 15, 15, {
+    'width': 170, 
+    'elementHandlers': specialElementHandlers
+  });
+
+
+var string = doc.output('datauristring');
+
+document.querySelector("#pdf").src= string;
+
+}catch(err){
+alert(err);
+}
+
+</script>
+
+</body>

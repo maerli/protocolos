@@ -1,0 +1,68 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+//axios.get("/created/1").then(result=>result).catch(err=>alert(err));
+</script>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.1/react-router-dom.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+<script type="text/babel" src="perfil.js"> </script>
+<script type="text/babel" src="history.js"> </script>
+<script type="text/babel" src="document.js"> </script>
+<script type="text/babel" src="protocolos.js"> </script>
+<script type="text/babel" src="table.js"> </script>
+<script type="text/babel" src="app.js"> </script>
+<script type="text/babel" src="edit.js"> </script>
+<script type="text/babel" src="origens.js"> </script>
+<script type="text/babel" src="assuntos.js"> </script>
+<script type="text/babel" src="login.js"> </script>
+<script type="text/babel" src="main.js"> </script>
+<style>
+input{
+display:block;
+}
+div{
+    padding-top:5px;
+}
+</style>
+<script type="text/babel">
+function Div(dta){
+    return (<div>
+    <label> {dta.name} </label>
+    <input ref={dta.iref} />
+    
+    
+    
+    </div>
+    );
+}
+
+function pzeros(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+  
+  function serialize(id,pos, date){
+    const year = new Date(date).getFullYear();
+    return pzeros(id,5) + "-"+ pzeros(pos,4) + "/"+ year;
+  }
+
+
+const Router = ReactRouterDOM.HashRouter;
+ 
+ const {Switch,
+  Route,
+  Link} = ReactRouterDOM;
+
+ReactDOM.render(<App/>, document.querySelector("#root"))
+
+</script>
+<body>
+<div id="root"></div>
+</body>
+</html>
